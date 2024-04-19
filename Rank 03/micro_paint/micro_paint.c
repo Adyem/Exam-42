@@ -35,12 +35,17 @@ void draw_rectangle(Drawing *drawing, char type, float x, float y, float width, 
 	int i;
 
 	i = 0;
-    while (i < drawing->height) {
-        for (int j = 0; j < drawing->width; j++) {
-            if (type == 'R') {
+    while (i < drawing->height)
+	{
+        for (int j = 0; j < drawing->width; j++)
+		{
+            if (type == 'R')
+			{
                 if (j >= x && j < max_x && i >= y && i < max_y)
                     drawing->canvas[i][j] = ch;
-            } else if (type == 'r') {
+            }
+			else if (type == 'r')
+			{
                 if ((j == (int)x || j == max_x - 1) && i >= y && i < max_y)
                     drawing->canvas[i][j] = ch;
                 if ((i == (int)y || i == max_y - 1) && j >= x && j < max_x)
@@ -51,8 +56,8 @@ void draw_rectangle(Drawing *drawing, char type, float x, float y, float width, 
     }
 }
 
-
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     if (argc != 2) {
         printf("Error: argument\n");
         return 1;

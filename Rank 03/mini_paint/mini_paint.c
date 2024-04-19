@@ -62,7 +62,7 @@ void draw_circle(Canvas *canvas, Circle *circle) {
 
             if (circle->type == 'C' && dist_sq <= radius_sq)
                 canvas->canvas[i][j] = circle->ch;
-            else if (circle->type == 'c' && fabs(dist_sq - radius_sq) < 2 * circle->radius + 1)
+            else if (circle->type == 'c' && (radius_sq - 1 < dist_sq && dist_sq < radius_sq + 1))
                 canvas->canvas[i][j] = circle->ch;
         }
     }
