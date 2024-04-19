@@ -56,12 +56,14 @@ void print_canvas(Canvas *canvas) {
 void draw_circle(Canvas *canvas, Circle *circle) {
     for (int i = 0; i < canvas->height; i++) {
         for (int j = 0; j < canvas->width; j++) {
-            float dist = sqrtf(powf(j - circle->x, 2) + powf(i - circle->y, 2));
-            if (circle->type == 'C' && dist <= circle->radius) {
+            // Calculate the square of the distance to avoid using sqrt
+            float dist_sq = powf(j - circle->x, 2) + powf(i - circle->y, 2);
+            float radius_sq = powf(circle->radius, 2);
+
+            if (circle->type == 'C' && dist_sq <= radius_sq)
                 canvas->canvas[i][j] = circle->ch;
-            } else if (circle->type == 'c' && fabs(dist - circle->radius) < 1.0) {
+            else if (circle->type == 'c' && fabs(dist_sq - radius_sq) < 2 * circle->radius + 1)
                 canvas->canvas[i][j] = circle->ch;
-            }
         }
     }
 }
@@ -95,8 +97,10 @@ int main(int argc, char **argv) {
     }
 
     Circle circle;
-    while (fscanf(file, "%c %f %f %f %c\n", &circle.type, &circle.x, &circle.y, &circle.radius, &circle.ch) == 5) {
-        if (circle.type != 'C' && circle.type != 'c') {
+    while (fscanf(file, "%c %f %f %f %c\n", &circle.type, &circle.x, &circle.y, &circle.radius, &circle.ch) == 5)
+	{
+        if (circle.type != 'C' && circle.type != 'c')
+		{
             free_canvas(&canvas);
             fclose(file);
             write(1, ERR_FILE, strlen(ERR_FILE));
@@ -104,7 +108,6 @@ int main(int argc, char **argv) {
         }
         draw_circle(&canvas, &circle);
     }
-
     print_canvas(&canvas);
     free_canvas(&canvas);
     fclose(file);
