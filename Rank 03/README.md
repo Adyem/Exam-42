@@ -1,3 +1,12 @@
-This branch contains my own code for mini/micro_paint, nested within [Glagan's tester](https://github.com/Glagan/42-exam-rank-03).
+# Exam Rank 03
 
-See the `master` branch for changes made to the tester, without my solutions to the subjects.
+>Binaries are **outdated**, compile ``our_[mini|micro]_paint.c`` and use that as a reference.
+
+## Tests
+
+Your code should be in a single file ``micro_paint.c`` (or ``mini_paint.c``).  
+You can start ``test.sh`` and it will generate random good or bad examples that will be tested by ``our_micro_paint`` and **your** program.  
+The result of both programs (exit code) are tested and the output is tested with diff.  
+A **0** indicates it tested a non-valid file and **1** a valid file.
+
+The tests end when an error occur, and you can see the example that caused the error in ``example_``, and the good output in ``coutput`` and your output in ``output``.
