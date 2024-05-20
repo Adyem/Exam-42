@@ -61,6 +61,8 @@ char	**ft_draw_canvis(char symbol, float width, float height)
 		i++;
 	}
 	canves[i] = NULL;
+	printf("the height of the canves is %f\n", height);
+	printf("the width of the canves is %f\n", width);
 	return (canves);
 }
 
@@ -88,16 +90,19 @@ int	ft_draw_square(char **canves, FILE *file)
 		printf("%c %f %f %f %f %c\n", filled, s_width, s_height, t_width, t_height, symbol);
 		while (canves[i])
 		{
-			while (canves[j])
+			j = 0;
+			while (canves[i][j])
 			{
 				printf("%i == %i\n", i, (int)s_height);
-				if (i >= (int)s_height && i < (int)t_height && j >= (int)s_width && j < (int)t_width)
+				if ((i >= (int)s_height) && (i < (int)t_height)
+						&& (j >= (int)s_width) && (j < (int)t_width))
 				{
 					if (filled == 'R')
 						canves[i][j] = symbol;
 					else if (filled == 'r')
 					{
-						if (i == (int)s_height || i == (int)t_height - 1 || j == (int)s_width || j == (int)t_width - 1)
+						if ((i == (int)s_height) || (i == (int)t_height - 1)
+								|| j == (int)s_width || j == (int)t_width - 1)
 							canves[i][j] = symbol;
 					}
 				}
