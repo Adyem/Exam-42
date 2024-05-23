@@ -54,11 +54,20 @@ int
 			&& zone->height > 0 && zone->height <= 300);
 }
 
-int
-	check_shape(t_shape *shape)
+int check_shape(t_shape *shape)
 {
-	return (shape->width > 0.00000000 && shape->height > 0.00000000
-			&& (shape->type == 'r' || shape->type == 'R'));
+    int width_check = shape->width > 0.00000000;
+    int height_check = shape->height > 0.00000000;
+    int type_check = (shape->type == 'r' || shape->type == 'R');
+
+    printf("Width check (shape->width > 0): %d (shape->width = %f)\n", width_check, shape->width);
+    printf("Height check (shape->height > 0): %d (shape->height = %f)\n", height_check, shape->height);
+    printf("Type check (shape->type == 'r' || shape->type == 'R'): %d (shape->type = %c)\n", type_check, shape->type);
+
+    int result = width_check && height_check && type_check;
+    printf("Overall shape check result: %d\n", result);
+
+    return result;
 }
 
 int
@@ -136,6 +145,7 @@ int
 			return (0);
 		draw_shape(drawing, &tmp, zone);
 	}
+	printf("number %i", scan_ret);
 	if (scan_ret != -1)
 		return (0);
 	return (1);
@@ -168,13 +178,13 @@ int
 	if (argc != 2)
 		return (str_error("Error: argument\n", 1));
 	if (!(file = fopen(argv[1], "r")))
-		return (str_error("Error: Operation file corrupted\n", 1));
+		return (str_error("3-Error: Operation file corrupted\n", 1));
 	if (!get_zone(file, &zone))
 		return (clear_all(file, NULL) && str_error("Error: Operation file corrupted\n", 1));
 	if (!(drawing = paint_background(&zone)))
-		return (clear_all(file, NULL) && str_error("Error: malloc failed :)\n", 1));
+		return (clear_all(file, NULL) && str_error("2-Error: malloc failed :)\n", 1));
 	if (!draw_shapes(file, &drawing, &zone))
-		return (clear_all(file, drawing) && str_error("Error: Operation file corrupted\n", 1));
+		return (clear_all(file, drawing) && str_error("1-Error: Operation file corrupted\n", 1));
 	draw_drawing(drawing, &zone);
 	clear_all(file, drawing);
 	return (0);
