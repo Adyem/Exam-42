@@ -90,7 +90,7 @@ int	ft_draw_square(char **canves, FILE *file)
 		t_height = height + s_height;
 		i = 0;
 		j = 0;
-		printf("%c %i %i %f %f %f %f %c %i\n", filled, i, j, s_width, s_height, t_width, t_height, symbol, number);
+		//printf("%c %i %i %f %f %f %f %c %i\n", filled, i, j, s_width, s_height, t_width, t_height, symbol, number);
 		while (canves[i])
 		{
 			j = 0;
@@ -155,17 +155,17 @@ int	main(int argc, char **argv)
 		return (ft_error("Error: Argument\n"));
 	file = fopen(argv[1], "r");
 	if (!file)
-		return (ft_error("Error: Operation file is corrupted\n"));
+		return (ft_error("Error: Operation file corrupted\n"));
 	number = fscanf(file, "%f %f %c\n", &width, &height, &symbol);
 	//printf("amount of symbols = %i\n", number);
 	if (number != 3)
-		return (ft_error("Error: Operation file is corrupted\n"));
+		return (ft_error("Error: Operation file corrupted\n"));
 	canves = ft_draw_canvis(symbol, width, height);
 	if (!canves)
-		return (ft_error("Error: Operation file is corrupted\n"));
+		return (ft_error("Error: Operation file corrupted\n"));
 	error = 0;
 	if (ft_draw_square(canves, file))
-		error = ft_error("Error: Operation file is corrupted\n");
+		error = ft_error("Error: Operation file corrupted\n");
 	if (!error)
 		ft_print_canves(canves);
 	fclose(file);
