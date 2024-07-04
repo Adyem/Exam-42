@@ -23,7 +23,7 @@ int	ft_putstr_fd2(char *str, char *arg)
 		}
 	}
 	write(2, "\n", 1);
-	return (1);
+	exit (1);
 }
 
 int	ft_cd(char **argv, int i)
@@ -35,11 +35,22 @@ int	ft_cd(char **argv, int i)
 	return (0);
 }
 
+void	ft_excecute(char **argv, int i, int tmp_fd, char **env)
+{
+	argv[i] = NULL;
+	dup2(tmp_fd, STDIN_FILENO);
+	close(tmp_fd);
+	execve(argv[0], argv, env);
+	ft_putstr_fd2("error: cannot excecute ", argv[0]);
+	exit(1);
+}
+
 int main(int argc, char **argv, char **env)
 {
 	int	i;
 	int	fd[2];
 	int	tmp_fd;
+	int	status;
 	(void)argc;
 
 	i = 0;
@@ -53,6 +64,38 @@ int main(int argc, char **argv, char **env)
 		if (strcmp(argv[0], "cd") == 0)
 		{
 			ft_cd(argv, i);
+		}
+		else if (i != 0 && (argv[i] == NULL || strcmp(argv[i], ";") == 0))
+		{
+			if (fork() == 0)
+				ft_excecute(argv, i, tmp_fd, env);
+			else
+			{
+				close(tmp_fd);
+				while(waitpid(-1, NULL, WUNTRACED) != -1)
+					;
+				tmp_fd = dup(STDIN_FILENO);
+			}
+		}
+		else if (i != 0 && strcmp(argv[i], "|") == 0)
+		{
+			pipe(fd);
+			if (fork() == 0)
+			{
+				dup2(fd[1], STDOUT_FILENO);
+				close(fd[0]);
+				close(fd[1]);
+				ft_excecute(argv, i, tmp_fd, env);
+			}
+			else
+			{
+				close(fd[1]);
+				close(tmp_fd);
+				waitpid(-1, &status, 0);
+				if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+					exit(1);
+				tmp_fd = fd[0];
+			}
 		}
 	}
 	close(tmp_fd);
