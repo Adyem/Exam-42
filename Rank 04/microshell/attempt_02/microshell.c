@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 
-int	ft_putstr_fd2(char *str, char *arg)
+void	ft_putstr_fd2(char *str, char *arg, int rvalue)
 {
 	int i;
 
@@ -23,7 +23,9 @@ int	ft_putstr_fd2(char *str, char *arg)
 		}
 	}
 	write(2, "\n", 1);
-	exit (1);
+	if (rvalue)
+		exit (1);
+	return ;
 }
 
 int	ft_cd(char **argv, int i)
