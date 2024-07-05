@@ -50,7 +50,7 @@ int main(int argc, char **argv, char **env)
 	int	i;
 	int	fd[2];
 	int	tmp_fd;
-	int	status;
+	int status;
 	(void)argc;
 
 	i = 0;
@@ -72,8 +72,7 @@ int main(int argc, char **argv, char **env)
 			else
 			{
 				close(tmp_fd);
-				while(waitpid(-1, NULL, WUNTRACED) != -1)
-					;
+				waitpid(-1, &status, 0);
 				tmp_fd = dup(STDIN_FILENO);
 			}
 		}
@@ -92,8 +91,6 @@ int main(int argc, char **argv, char **env)
 				close(fd[1]);
 				close(tmp_fd);
 				waitpid(-1, &status, 0);
-				if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-					exit(1);
 				tmp_fd = fd[0];
 			}
 		}
