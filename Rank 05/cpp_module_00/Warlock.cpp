@@ -11,8 +11,11 @@ Warlock::Warlock()
 
 Warlock & Warlock::operator=(Warlock const & other)
 {
-	this->_name = other._name;
-	this->_title = other._title;
+	if (this != &other)
+	{
+		this->_name = other._name;
+		this->_title = other._title;
+	}
 	return *this;
 }
 

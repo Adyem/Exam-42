@@ -17,10 +17,7 @@ ASpell::ASpell(ASpell const & obj)
 	*this = obj;
 }
 
-ASpell::~ASpell()
-{
-
-}
+ASpell::~ASpell() {}
 
 std::string ASpell::getName() const
 {
