@@ -1,0 +1,12 @@
+[
+  {
+    "directory": "/home/adyem/exam/Rank 05/cpp_module_00/Attempt_02",
+    "command": "/usr/bin/g++ -std=c++98 -c main.cpp -o main.o",
+    "file": "/home/adyem/exam/Rank 05/cpp_module_00/Attempt_01/main.cpp"
+  },
+  {
+    "directory": "/home/adyem/exam/Rank 05/cpp_module_00/Attempt_02",
+    "command": "/usr/bin/g++ -std=c++98 -c Warlock.cpp -o Warlock.o",
+    "file": "/home/adyem/exam/Rank 05/cpp_module_00/Attempt_01/Warlock.cpp"
+  }
+]
