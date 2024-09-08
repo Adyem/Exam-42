@@ -1,0 +1,53 @@
+[
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./Warlock.cpp -o ./Warlock.o",
+    "file": "./Warlock.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./ASpell.cpp -o ./ASpell.o",
+    "file": "./ASpell.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./ATarget.cpp -o ./ATarget.o",
+    "file": "./ATarget.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./Fwoosh.cpp -o ./Fwoosh.o",
+    "file": "./Fwoosh.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./Dummy.cpp -o ./Dummy.o",
+    "file": "./Dummy.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./Fireball.cpp -o ./Fireball.o",
+    "file": "./Fireball.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./Polymorph.cpp -o ./Polymorph.o",
+    "file": "./Polymorph.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./BrickWall.cpp -o ./BrickWall.o",
+    "file": "./BrickWall.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./SpellBook.cpp -o ./SpellBook.o",
+    "file": "./SpellBook.cpp"
+  },
+  {
+    "directory": ".",
+    "command": "/usr/bin/g++ -std=c++98 -c ./TargetGenerator.cpp -o ./TargetGenerator.o",
+    "file": "./TargetGenerator.cpp"
+  }
+]
+
