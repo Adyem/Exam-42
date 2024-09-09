@@ -1,0 +1,3 @@
+#include "ATarget.hpp"
+
+Dummy()
