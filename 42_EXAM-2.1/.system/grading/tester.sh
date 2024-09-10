@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/04 21:15:51 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/09/01 23:52:05 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,12 @@ then
 fi
 
 cd .system/grading
-clang++ -Wall -Wextra -Werror -std=c++98 -o source Warlock.cpp ASpell.cpp ATarget.cpp BrickWall.cpp Dummy.cpp Fireball.cpp Fwoosh.cpp Polymorph.cpp SpellBook.cpp TargetGenerator.cpp $MAIN
+clang++ -Wall -Wextra -Werror -std=c++98 -o source Warlock.cpp ASpell.cpp ATarget.cpp Dummy.cpp Fwoosh.cpp $MAIN
 ./source | cat -e > sourcexam       #TESTING
 rm source
 cd ../../rendu
 {
-clang++ -Wall -Wextra -Werror -std=c++98 -o final cpp_module02/Warlock.cpp cpp_module02/ASpell.cpp cpp_module02/ATarget.cpp cpp_module02/BrickWall.cpp cpp_module02/Dummy.cpp cpp_module02/Fireball.cpp cpp_module02/Fwoosh.cpp cpp_module02/Polymorph.cpp cpp_module02/SpellBook.cpp cpp_module02/TargetGenerator.cpp $MAIN1
+clang++ -Wall -Wextra -Werror -std=c++98 -o final cpp_module01/Warlock.cpp cpp_module01/ASpell.cpp cpp_module01/ATarget.cpp cpp_module01/Dummy.cpp cpp_module01/Fwoosh.cpp $MAIN1
 }  &>../.system/grading/traceback
 # if there is a traceback file, exit this script
 # if [ -e ../.system/grading/traceback ]

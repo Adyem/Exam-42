@@ -1,6 +1,6 @@
-#include "Warlock.hpp"
 #include <string>
 #include <iostream>
+#include "Warlock.hpp"
 
 Warlock::Warlock(const std::string &name, const std::string &title) : _name(name), _title(title)
 {
@@ -16,6 +16,7 @@ const std::string &Warlock::getName() const
 {
 	return (this->_name);
 }
+
 const std::string &Warlock::getTitle() const
 {
 	return (this->_title);

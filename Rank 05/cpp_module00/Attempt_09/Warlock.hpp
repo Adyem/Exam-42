@@ -1,5 +1,5 @@
-#ifndef WARLOKC_HPP
-# define WARLOKC_HPP
+#ifndef WARLOCK_HPP
+# define WARLOCK_HPP
 
 #include <string>
 
@@ -9,8 +9,8 @@ class Warlock
 		std::string _name;
 		std::string _title;
 		Warlock();
-		Warlock &operator=(const Warlock &other);
 		Warlock(const Warlock &other);
+		Warlock &operator=(const Warlock &other);
 
 	public:
 		Warlock(const std::string &name, const std::string &title);
@@ -19,6 +19,6 @@ class Warlock
 		const std::string &getTitle() const;
 		void setTitle(const std::string &title);
 		void introduce() const;
-};
+};  
 
 #endif

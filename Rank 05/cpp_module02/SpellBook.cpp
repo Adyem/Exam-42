@@ -16,18 +16,15 @@ SpellBook::SpellBook()
 
 SpellBook::~SpellBook()
 {
-	for (std::map<std::string, ASpell*>::iterator it = _SpellBook.begin(); it != _SpellBook.end(); ++it) {
+	for (std::map<std::string, ASpell*>::iterator it = _SpellBook.begin(); it != _SpellBook.end(); ++it)
 		delete it->second;
-	}
 	_SpellBook.clear();
 }
 
 void SpellBook::learnSpell(ASpell* spell)
 {
 	if (spell)
-	{
 		_SpellBook[spell->getName()] = spell->clone();
-	}
 }
 
 void SpellBook::forgetSpell(std::string const & SpellName)
