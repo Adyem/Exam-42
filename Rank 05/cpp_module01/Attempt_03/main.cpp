@@ -8,7 +8,7 @@ int main()
 {
   Warlock richard("Richard", "the Titled");
 
-  Dummy bob();
+  Dummy bob;
   Fwoosh* fwoosh = new Fwoosh();
 
   richard.learnSpell(fwoosh);
