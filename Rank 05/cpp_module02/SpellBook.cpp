@@ -1,16 +1,5 @@
 #include "SpellBook.hpp"
 
-SpellBook::SpellBook(SpellBook const & src)
-{
-	*this = src;
-}
-
-SpellBook & SpellBook::operator=(SpellBook const & src)
-{
-	_SpellBook = src._SpellBook;
-	return (*this);
-}
-
 SpellBook::SpellBook()
 {}
 
