@@ -24,8 +24,6 @@ ATarget *TargetGenerator::createTarget(std::string const &type)
 	ATarget *tmp = NULL;
 
 	if (_target.find(type) != _target.end())
-	{
 		tmp = _target[type];
-	}
 	return (tmp);
 }

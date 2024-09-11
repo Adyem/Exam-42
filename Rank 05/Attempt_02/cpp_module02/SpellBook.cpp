@@ -20,20 +20,15 @@ SpellBook::~SpellBook()
 void SpellBook::learnSpell(const ASpell *spell)
 {
 	if (spell)
-	{
 		_spellbook[spell->getName()] = spell->clone();
-	}
 }
 
 void SpellBook::forgetSpell(std::string const &spellname)
 {
-	std::map<std::string, ASpell *>::iterator it;
-
-	it = _spellbook.find(spellname);
-	if (it != _spellbook.end())
+	while (_spellbook.begin() != _spellbook.end())
 	{
-		delete it->second;
-		_spellbook.erase(it);
+		delete _spellbook.begin()->second;
+		_spellbook.erase(_spellbook.begin());
 	}
 }
 
