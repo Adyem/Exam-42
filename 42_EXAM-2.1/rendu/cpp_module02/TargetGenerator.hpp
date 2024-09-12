@@ -1,4 +1,4 @@
-#ifndef TARGETGENERRATOR_HPP
+#ifndef TARGETGENERATOR_HPP
 # define TARGETGENERATOR_HPP
 
 #include "ATarget.hpp"

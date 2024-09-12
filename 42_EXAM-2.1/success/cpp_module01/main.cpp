@@ -9,7 +9,7 @@ int main()
   Warlock richard("Richard", "the Titled");
 
   Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
+  Fwoosh* fwoosh = new Fwoosh;
 
   richard.learnSpell(fwoosh);
 
@@ -18,6 +18,5 @@ int main()
 
   richard.forgetSpell("Fwoosh");
   richard.launchSpell("Fwoosh", bob);
-  
   delete fwoosh;
 }
