@@ -1,9 +1,12 @@
-#include "Warlock.hpp"
 #include <string>
 #include <iostream>
+#include "Warlock.hpp"
 #include <map>
+#include "ATarget.hpp"
+#include "ASpell.hpp"
 
-Warlock::Warlock(const std::string &name, const std::string &title) : _name(name), _title(title)
+Warlock::Warlock(const std::string &name, const std::string &title) :
+	_name(name), _title(title) 
 {
 	std::cout << _name << ": This looks like another boring day." << std::endl;
 }
@@ -28,9 +31,9 @@ const std::string &Warlock::getTitle() const
 	return (this->_title);
 }
 
-void Warlock::setTitle(std::string const &title)
+void Warlock::setTitle(const std::string &title)
 {
-	this->_title = title;
+	_title = title;
 }
 
 void Warlock::introduce() const
@@ -44,17 +47,17 @@ void Warlock::learnSpell(ASpell *spell)
 		_spellbook[spell->getName()] = spell->clone();
 }
 
-void Warlock::forgetSpell(const std::string name)
+void Warlock::forgetSpell(const std::string spellname)
 {
-	if (_spellbook.find(name) != _spellbook.end())
+	if (_spellbook.find(spellname) != _spellbook.end())
 	{
-		delete _spellbook.find(name)->second;
-		_spellbook.erase(_spellbook.find(name));
+		delete _spellbook.find(spellname)->second;
+		_spellbook.erase(_spellbook.find(spellname));
 	}
 }
 
-void Warlock::launchSpell(const std::string name, const ATarget &target)
+void Warlock::launchSpell(const std::string spellname, const ATarget &target)
 {
-	if (_spellbook.find(name) != _spellbook.end())
-		_spellbook.find(name)->second->launch(target);
+	if (_spellbook.find(spellname) != _spellbook.end())
+		_spellbook[spellname]->launch(target);
 }

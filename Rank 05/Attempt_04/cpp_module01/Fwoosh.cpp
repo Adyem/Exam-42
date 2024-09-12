@@ -1,5 +1,5 @@
-#include "ASpell.hpp"
 #include "Fwoosh.hpp"
+#include "ASpell.hpp"
 
 Fwoosh::Fwoosh() : ASpell("Fwoosh", "fwooshed") {}
 
