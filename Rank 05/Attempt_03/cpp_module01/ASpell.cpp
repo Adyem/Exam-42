@@ -1,9 +1,8 @@
-#include "ATarget.hpp"
 #include "ASpell.hpp"
+#include "ATarget.hpp"
 #include <string>
-#include <iostream>
 
-ASpell::ASpell(const std::string &name, const std::string &effects) : 
+ASpell::ASpell(const std::string &name, const std::string &effects) :
 	_name(name), _effects(effects) {}
 
 ASpell::~ASpell() {}

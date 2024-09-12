@@ -16,12 +16,13 @@ const std::string &Warlock::getName() const
 {
 	return (this->_name);
 }
+
 const std::string &Warlock::getTitle() const
 {
 	return (this->_title);
 }
 
-void Warlock::setTitle(const std::string &title)
+void Warlock::setTitle(std::string const &title)
 {
 	this->_title = title;
 }

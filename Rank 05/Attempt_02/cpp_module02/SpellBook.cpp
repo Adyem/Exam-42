@@ -25,10 +25,10 @@ void SpellBook::learnSpell(const ASpell *spell)
 
 void SpellBook::forgetSpell(std::string const &spellname)
 {
-	while (_spellbook.begin() != _spellbook.end())
+	if (_spellbook.find(spellname) != _spellbook.end())
 	{
-		delete _spellbook.begin()->second;
-		_spellbook.erase(_spellbook.begin());
+		delete _spellbook.find(spellname)->second;
+		_spellbook.erase(_spellbook.find(spellname));
 	}
 }
 

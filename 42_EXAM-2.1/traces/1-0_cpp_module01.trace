@@ -1,0 +1,16 @@
+/usr/bin/ld: /tmp/main-6bab95.o: in function `main':
+main.cpp:(.text+0x128): undefined reference to `Warlock::learnSpell(ASpell*)'
+/usr/bin/ld: main.cpp:(.text+0x184): undefined reference to `Warlock::launchSpell(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, ATarget const&)'
+/usr/bin/ld: main.cpp:(.text+0x253): undefined reference to `Warlock::launchSpell(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, ATarget const&)'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+<--------------~-~-~-~-~-~-~-~-~------------>
+Richard: This looks like another boring day.$
+Richard: I am Richard, the Titled!$
+Target Practice Dummy has been fwooshed!$
+Richard: My job here is done!$
+\n
+<--------------~-~-~-~-~-~-~-~-~------------>\n\n
+<--------------~-~-~-~-~-~-~-~-~------------>
+\n
+<--------------~-~-~-~-~-~-~-~-~------------>
