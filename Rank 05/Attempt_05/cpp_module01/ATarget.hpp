@@ -13,11 +13,12 @@ class ATarget
 	public:
 		ATarget(const std::string &type);
 		virtual ~ATarget();
-		ATarget &operator=(const ATarget &other);
-		ATarget(const ATarget &other);
+		ATarget &operator=(const ATarget &target);
+		ATarget(const ATarget &target);
 		const std::string &getType() const;
 		virtual ATarget *clone() const = 0;
 		void getHitBySpell(const ASpell &spell) const;
+
 };
 
 #endif

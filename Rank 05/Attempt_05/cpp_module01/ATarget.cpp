@@ -1,6 +1,6 @@
-#include <string>
 #include "ATarget.hpp"
 #include "ASpell.hpp"
+#include <string>
 #include <iostream>
 
 ATarget::ATarget(const std::string &type) : _type(type) {}
@@ -18,6 +18,7 @@ ATarget::ATarget(const ATarget &other)
 {
 	*this = other;
 }
+
 
 const std::string &ATarget::getType() const
 {

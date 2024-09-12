@@ -1,5 +1,5 @@
-#include "Dummy.hpp"
 #include "ATarget.hpp"
+#include "Dummy.hpp"
 
 Dummy::Dummy() : ATarget("Target Practice Dummy") {}
 

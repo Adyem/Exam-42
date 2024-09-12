@@ -3,9 +3,9 @@
 
 #include <string>
 #include <map>
-#include "ASpell.hpp"
 #include "ATarget.hpp"
-#include "SpellBook.hpp"
+#include "ASpell.hpp"
+#include "SpellBook"
 
 class Warlock
 {
@@ -27,7 +27,6 @@ class Warlock
 		void learnSpell(ASpell *spell);
 		void forgetSpell(const std::string spellname);
 		void launchSpell(const std::string spellname, const ATarget &target);
-
 };
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef ASPELL_HPP
 # define ASPELL_HPP
 
-#include "string"
+#include <string>
 
 class ATarget;
 
