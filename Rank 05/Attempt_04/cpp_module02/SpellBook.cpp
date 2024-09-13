@@ -17,7 +17,7 @@ SpellBook::~SpellBook()
 
 void SpellBook::learnSpell(ASpell *spell)
 {
-	if (spell)
+	if (spell && _spellbook.find(spell->getName()) != _spellbook.end())
 		_spellbook[spell->getName()] = spell->clone();
 }
 

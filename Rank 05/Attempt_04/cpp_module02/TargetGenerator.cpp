@@ -16,7 +16,7 @@ TargetGenerator::~TargetGenerator()
 
 void TargetGenerator::learnTargetType(ATarget *target)
 {
-	if (target)
+	if (target && _target.find(target->getType()) != _target.end())
 		_target[target->getType()] = target->clone();
 }
 
