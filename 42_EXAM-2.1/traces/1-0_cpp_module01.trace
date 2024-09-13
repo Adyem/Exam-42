@@ -1,0 +1,14 @@
+/usr/bin/ld: /tmp/main-20d765.o: in function `main':
+main.cpp:(.text+0x127): undefined reference to `Warlock::learnSpell(ASpell*)'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+<--------------~-~-~-~-~-~-~-~-~------------>
+Richard: This looks like another boring day.$
+Richard: I am Richard, the Titled!$
+Target Practice Dummy has been fwooshed!$
+Richard: My job here is done!$
+\n
+<--------------~-~-~-~-~-~-~-~-~------------>\n\n
+<--------------~-~-~-~-~-~-~-~-~------------>
+\n
+<--------------~-~-~-~-~-~-~-~-~------------>
