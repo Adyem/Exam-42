@@ -1,71 +1,38 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    tester.sh                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/04 21:15:51 by jcluzet          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-MAIN='main.cpp'
-MAIN1='../.system/grading/main.cpp'
-
-index=0
-
-if [ -e traceback ]
-then
+#!/bin/bash
+cd .system/grading/
+# if there is a traceback file then remove it
+if [ -e traceback ]; then
     rm traceback
 fi
 
-cd .system/grading
-clang++ -Wall -Wextra -Werror -std=c++98 -o source Warlock.cpp ASpell.cpp ATarget.cpp BrickWall.cpp Dummy.cpp Fireball.cpp Fwoosh.cpp Polymorph.cpp SpellBook.cpp TargetGenerator.cpp $MAIN
-./source | cat -e > sourcexam       #TESTING
-rm source
-cd ../../rendu
-{
-clang++ -Wall -Wextra -Werror -std=c++98 -o final cpp_module02/Warlock.cpp cpp_module02/ASpell.cpp cpp_module02/ATarget.cpp cpp_module02/BrickWall.cpp cpp_module02/Dummy.cpp cpp_module02/Fireball.cpp cpp_module02/Fwoosh.cpp cpp_module02/Polymorph.cpp cpp_module02/SpellBook.cpp cpp_module02/TargetGenerator.cpp $MAIN1
-}  &>../.system/grading/traceback
-# if there is a traceback file, exit this script
-# if [ -e ../.system/grading/traceback ]
-# then
-# 	mv ../.system/grading/traceback ../traceback
-# 	exit 1
-# fi
-{
-./final | cat -e > finalexam        #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
+for port in $(seq 4444 65000); do echo -ne "\035" | telnet 127.0.0.1 $port > /dev/null 2>&1; [ $? -eq 1 ] && break; done
+
+PORT=$port
+
+bash test_miniserv.sh $PORT
+
+# if there is a final file and there is not a traceback file then the diff is check
+if [ -e final ] && [ ! -e traceback ]; then
+
+DIFF=$(diff bim normal.output)
 if [ "$DIFF" != "" ]
 then
-		index=$(($index + 1))
-		echo "<--------------~-~-~-~-~-~-~-~-~------------>" >> traceback
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		echo "<--------------~-~-~-~-~-~-~-~-~------------>\n\n" >> traceback
-		echo "<--------------~-~-~-~-~-~-~-~-~------------>" >> traceback
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "<--------------~-~-~-~-~-~-~-~-~------------>" >> traceback
-fi
-rm finalexam
 
-if [ $index -eq 0 ]
-then
-	touch passed
+        echo "----------------8<-------------[ START TEST " >> traceback
+        printf "        💻 TEST\n./a.out $PORT\n" >> traceback
+        printf " Then there is 3 connexion to the server\n" >> traceback
+        printf "        🔎 YOUR OUTPUT:\n" >> traceback
+        cat bim >> traceback
+        printf "        🗝 EXPECTED OUTPUT:\n" >> traceback
+        cat normal.output >> traceback
+        echo "----------------8<------------- END TEST ]" >> traceback
+        mv traceback ../../traceback
+        cd ../../
+        exit 1
 fi
-{
+
+touch passed
+else
 mv traceback ../../traceback
-}	&>/dev/null
-rm sourcexam
+fi
+cd ../../
