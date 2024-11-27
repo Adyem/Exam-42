@@ -44,7 +44,8 @@ int     main(int ac, char **av)
     struct sockaddr_in  serveraddr;
     socklen_t           len;
     int serverfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (serverfd == -1) err(NULL);
+    if (serverfd == -1)
+		err(NULL);
     maxfd = serverfd;
 
     FD_ZERO(&current);
