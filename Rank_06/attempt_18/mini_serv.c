@@ -14,7 +14,7 @@ typedef struct s_client
 
 t_client	clients[1024];
 fd_set		write_set, read_set, current;
-int		max_fd = 0, gid = 0;
+int			max_fd = 0, gid = 0;
 char		recv_buffer[300000], send_buffer[300000];
 
 void	write_error(char *msg)
